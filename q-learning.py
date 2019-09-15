@@ -138,12 +138,12 @@ class DQN(nn.Module):
 		# be a linearly activated FCN
 		self.head = nn.Linear(linear_input_size, outputs)
 
-		def forward(self, x):
-			x = F.relu(self.bn1(self.conv1(x)))
-			x = F.relu(self.bn2(self.conv2(x)))
-			x = F.relu(self.bn3(self.conv3(x)))
-			# we return the flattened output
-			return self.head(x.view(x.size(0), -1))
+	def forward(self, x):
+		x = F.relu(self.bn1(self.conv1(x)))
+		x = F.relu(self.bn2(self.conv2(x)))
+		x = F.relu(self.bn3(self.conv3(x)))
+		# we return the flattened output
+		return self.head(x.view(x.size(0), -1))
 
 """ 
 The code below are utilities for extracting and processing rendered
@@ -310,12 +310,20 @@ def optimize_model():
     action_batch = torch.cat(batch.action)
     reward_batch = torch.cat(batch.reward)
 
-    # Compute Q(s_t, a) - the model computes Q(s_t), then we select the
+    # Compute Q(s_t, a_t ; θ_{i}) - the model computes Q(s_t), then we select the
     # columns of actions taken. These are the actions which would've been taken
-    # for each batch state according to policy_net
+    # for each batch state according to policy_net. The policy net is parameterized
+    # by parameters θ_{i}
     state_action_values = policy_net(state_batch).gather(1, action_batch)
 
-    # Compute V(s_{t+1}) for all next states.
+    # Compute V(s_{t+1}) for all next states. This is equal to:
+    # r + gamma * max_{a_{t+1}} Q(s_{t+1}, a_{t+1} ; θ_{i-})
+    # where θ_{i-} are the parameters of the target Q network
+    # during step i. These parameters are not equal to θ_{i}
+    # because the target Q net is frozen and its parameters are
+    # only updated by the parameters of the policy net every
+    # 10 iterations (hence here we have TARGET_UPDATE equal to 10)
+
     # Expected values of actions for non_final_next_states are computer based
     # on the "older" target_net; selecting their best reward with max(1)[0].
     # This is merged based on the mask, such that we'll have either the expected
