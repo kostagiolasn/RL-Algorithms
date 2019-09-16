@@ -105,7 +105,7 @@ replay memory a batch of transitions.
 Our model will be a convolutional neural network that takes in
 the difference between the current and previous screen patches.
 It has two outputs, representing Q(s, left) and Q(s, right) 
-where is is the input to the network. In effect, the network is
+where s is the input to the network. In effect, the network is
 trying to predict the expected return of taking each action given
 the current input.
 """
