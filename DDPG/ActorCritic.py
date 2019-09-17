@@ -5,7 +5,7 @@ import torch.autograd
 from torch.autograd import Variable
 
 class Critic(nn.Module):
-	# The critic is the deterministic policy network
+	# The critic is the Q network
 	def __init__(self, hidden_layer_size1 = 400, hidden_layer_size2 = 300,
 		 input_dim, output_q_value, action_dim):
 		super(Critic, self).__init__()
@@ -42,7 +42,7 @@ class Critic(nn.Module):
 		return output
 
 class Actor(nn.Module):
-	# The actor is the Q-network
+	# The actor is the deterministic policy network
 	def __init__(self, input_dim, hidden_layer_size1 = 400, 
 		hidden_layer_size2 = 300, output_q_value, learning_rate = 1e-4):
 		super(Critic, self).__init__()
