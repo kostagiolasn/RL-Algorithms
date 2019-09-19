@@ -4,6 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from gym.spaces import Box
 from OU_noise import *
+from agent import DDPGagent
+from utils import plotLearning
 
 def main():
 	# Specify environment name here
@@ -12,17 +14,30 @@ def main():
 
 	env = gym.make(ENV_NAME)
 
-	# Ensure that observation space is continuous
-	#assert isinstance(env.observation_space, Box), "observation space must be continuous"
-	#assert isinstance(env.action_space, Box), "action space must be continuous"
+	agent = DDPGagent(env)
 
-	env.reset()
-	print(env.action_space.shape)
-	#print("Total number of possible states %d" % env.observation_space.n)
+	score_history = []
 
-	#print("Total number of possible actions %d" % env.action_space.n)
+	np.random.seed(0)
+	for i in range(TOTAL_EPISODES):
+		observation = env.reset()
+		done = False
+		score = 0
+		while not done:
+			action = agent.choose_action(observation)
+			new_state, reward, done, info = env.step(action)
+			agent.remember(observation, action, reward, new_state, int(done))
+			agent.learn()
+			score += reward
+			observation = new_state
 
-	OU_noise = OU_Noise(env.action_space.shape)
+		score_history.append(score)
+
+		print('episode ', i, 'score %.2f' % score,
+          'trailing 100 games avg %.3f' % np.mean(score_history[-100:]))
+
+	filename = 'Walker2d-v2.png'
+	plotLearning(score_history, filename, window = 100)
 
 if __name__ == '__main__':
 	main()
