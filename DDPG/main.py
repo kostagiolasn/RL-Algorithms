@@ -1,9 +1,12 @@
 import sys
 import gym
+import torch as T
+import torch.nn as nn
+import torch.nn.functional as F
+import torch.optim as optim
 import numpy as np
 import matplotlib.pyplot as plt
 from gym.spaces import Box
-from OU_noise import *
 from agent import DDPGagent
 from utils import plotLearning
 
@@ -14,7 +17,10 @@ def main():
 
 	env = gym.make(ENV_NAME)
 
-	agent = DDPGagent(env)
+	nb_states = env.observation_space.shape[0]
+	nb_actions = env.action_space.shape[0]
+
+	agent = DDPGagent(env, [nb_states], nb_actions)
 
 	score_history = []
 
@@ -24,9 +30,9 @@ def main():
 		done = False
 		score = 0
 		while not done:
-			action = agent.choose_action(observation)
+			action = agent.select_action(observation)
 			new_state, reward, done, info = env.step(action)
-			agent.remember(observation, action, reward, new_state, int(done))
+			agent.remember(observation, action, new_state, reward, int(done))
 			agent.learn()
 			score += reward
 			observation = new_state
