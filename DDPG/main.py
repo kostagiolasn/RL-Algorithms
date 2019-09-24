@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 from gym.spaces import Box
 from agent import DDPGagent
 from utils import plotLearning
+from utils import visualize_agent
 
 def main():
 	# Specify environment name here
@@ -42,8 +43,11 @@ def main():
 		print('episode ', i, 'score %.2f' % score,
           'trailing 100 games avg %.3f' % np.mean(score_history[-100:]))
 
+	x = [i + 1 for i in range(TOTAL_EPISODES)]
 	filename = 'Walker2d-v2.png'
-	plotLearning(score_history, filename, window = 100)
+	plotLearning(x, score_history, filename)
+
+	visualize_agent(env, agent)
 
 if __name__ == '__main__':
 	main()
