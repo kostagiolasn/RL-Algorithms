@@ -18,9 +18,9 @@
   - [code](#)
 * "Vanilla" Actor Critic
 * Advantage Actor Critic (A2C)
- - [A3C Paper](https://arxiv.org/pdf/1602.01783.pdf) 
- - [OpenAI blog](https://blog.openai.com/baselines-acktr-a2c/#a2canda3c)
- - [code](#)
+  - [A3C Paper](https://arxiv.org/pdf/1602.01783.pdf) 
+  - [OpenAI blog](https://blog.openai.com/baselines-acktr-a2c/#a2canda3c)
+  - [code](#)
 * Continuous control with deep reinforcement learning
   - [DDPG Paper](https://arxiv.org/abs/1509.02971)
   - [code](#)
