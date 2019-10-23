@@ -16,7 +16,6 @@
 * "Vanilla Actor Critic
   - [Paper](https://papers.nips.cc/paper/1786-actor-critic-algorithms.pdf)
   - [code](#)
-* "Vanilla" Actor Critic
 * Advantage Actor Critic (A2C)
   - [A3C Paper](https://arxiv.org/pdf/1602.01783.pdf) 
   - [OpenAI blog](https://blog.openai.com/baselines-acktr-a2c/#a2canda3c)
@@ -40,7 +39,7 @@
 * Generative Adversarial Imitation Learning 
   - [GAIL Paper](https://arxiv.org/abs/1606.03476)
   - [code](#)
-*  Hindsight Experience Replay
+* Hindsight Experience Replay
   - [HER Paper](https://arxiv.org/abs/1707.01495)
   - [OpenAI Blog](https://blog.openai.com/ingredients-for-robotics-research/#understandingher)
   - [code](#)
