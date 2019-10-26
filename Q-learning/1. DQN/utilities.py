@@ -24,9 +24,13 @@ class ReplayBuffer(object):
         else:
             self.experience_memory[self.offset] = transition
         
+        # if the experience memory is full then proceed
+        # to overwrite old experiences. in general the memory
+        # input/output works in a FIFO sense
         self.offset = (self.offset + 1) % self.capacity
     
     def sample(self, batch_size):
+        # sample random batches of transitions
         return zip(*random.sample(self.experience_memory, batch_size))
     
     def __len__(self):

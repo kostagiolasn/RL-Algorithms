@@ -22,7 +22,7 @@ def main():
     ### HYPERPARAMETERS ###
     batch_size = 128
     mem_size = 10000
-    total_episodes = 10000
+    total_episodes = 10
     gamma = 0.99
     epsilon_start = 0.9
     epsilon_finish = 0.05
@@ -43,9 +43,12 @@ def main():
     
     for episode_num in range(0, total_episodes):
         
-        if C % 100:
+        # every C epochs copy the parameters of the
+        # online network to those of the target network
+        if episode_num % C:
             dqn_agent.update_target_network_params()
         
+        # compute the epsilon for that specific epoch
         current_epsilon_value = epsilon_finish + (epsilon_start - epsilon_finish) *\
             math.exp(-1 * episode_num / epsilon_decay)
         
@@ -53,11 +56,16 @@ def main():
         score = 0
         
         while not done:
+            # pick an action depending on the current state
             action = dqn_agent.act(state, current_epsilon_value)
+            # act and get feedback from the environment
             new_state, reward, done, info = env.step(action)
+            # add the transition to the experience buffer
             dqn_agent.memorize(state, action, new_state, reward, done)
+            # update the network parameters
             dqn_agent.learn()
             score += reward
+            # the state now will be the new state
             state = new_state
         
         state = env.reset()
