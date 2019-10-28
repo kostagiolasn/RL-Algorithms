@@ -1,7 +1,7 @@
 # RL Algorithms: Implementation of essential RL algorithms
 ## Q Learning variants 
-* Playing Atari with Deep Reinforcement Learning [[arxiv]](https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf) [[code]](#)
-* Deep Reinforcement Learning with Double Q-learning [[arxiv]](https://arxiv.org/abs/1509.06461) [[code]](https://github.com/higgsfield/RL-Adventure/blob/master/2.double%20dqn.ipynb)
+* Playing Atari with Deep Reinforcement Learning [[arxiv]](https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf) [[code]](https://github.com/kostagiolasn/RL-Algorithms/tree/master/Q-learning/1.%20DQN)
+* Deep Reinforcement Learning with Double Q-learning [[arxiv]](https://arxiv.org/abs/1509.06461) [[code]](https://github.com/kostagiolasn/RL-Algorithms/tree/master/Q-learning/2.%20Double%20DQN)
 * Dueling Network Architectures for Deep Reinforcement Learning [[arxiv]](https://arxiv.org/abs/1511.06581) [[code]](#)
 * Prioritized Experience Replay [[arxiv]](https://arxiv.org/abs/1511.05952) [[code]](#)
 * A Distributional Perspective on Reinforcement Learning [[arxiv]](https://arxiv.org/pdf/1707.06887.pdf) [[code]](#)
