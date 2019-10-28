@@ -73,14 +73,22 @@ class DQN_agent(object):
             done_batch = torch.tensor(done_batch, dtype=torch.float)
             
             y = []
+
             # estimate the values for the state-actions of the current state batch via our policy network
             # this will have size (batch_size, action_space_shape)
             q_values_online = self.online_dqn_network.forward(state_batch)
-            #print(q_values_online.size())
-            # estimate the values for the state-actions of the new state batch via the target network
+
+            # estimate the values for the state-actions of the next state batch via our policy network
             # this will have size (batch_size, action_space_shape)
-            next_q_values_target = self.target_dqn_network.forward(new_state_batch).detach()
-            #print(next_q_values_target.size())
+            q_values_next_online = self.online_dqn_network.forward(new_state_batch)
+            # find the actions with max value from the estimations of the online network
+            # this will have size (batch_size)
+            max_next_q_values_online = q_values_next_online.max(1)[1]
+            # estimate the values for the state-actions of the next state via our target network
+            q_values_next_target = self.target_dqn_network.forward(new_state_batch).detach()
+            # get the q_values that were estimated from our target networkthat correspond to the 
+            # actions with max value as estimated by our policy network
+            max_next_q_value_target = q_values_next_target.gather(1, max_next_q_values_online.unsqueeze(1)).squeeze(1)
             
             # the unsqueeze(1) function just takes the action batch that its of dimensions
             # (batch_size,) and just converts it to (batch_size, 1) - squeeze in general
@@ -95,9 +103,6 @@ class DQN_agent(object):
             # the squeeze(1) function just reverts everything to the original
             # dimension that is equal to (batch_size,)
             q_value_online = q_values_online.gather(1, action_batch.unsqueeze(1)).squeeze(1)
-            # get the action for which the estimated value by the target net
-            # is maximum
-            max_next_q_value_target = next_q_values_target.max(1)[0]
             # compute the optimization target (for the states that are final
             # we only want to add the reward)
             y = reward_batch + (self.gamma * max_next_q_value_target) * (1 - done_batch)
