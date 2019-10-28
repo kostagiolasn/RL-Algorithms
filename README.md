@@ -13,33 +13,33 @@
 * "Vanilla" Policy Gradients
   - [Paper](https://papers.nips.cc/paper/1713-policy-gradient-methods-for-reinforcement-learning-with-function-approximation.pdf)
   - [code](#)
-* "Vanilla Actor Critic
+* "Vanilla" Actor Critic
   - [Paper](https://papers.nips.cc/paper/1786-actor-critic-algorithms.pdf)
   - [code](#)
 * Advantage Actor Critic (A2C)
   - [A3C Paper](https://arxiv.org/pdf/1602.01783.pdf) 
   - [OpenAI blog](https://blog.openai.com/baselines-acktr-a2c/#a2canda3c)
   - [code](#)
-* Continuous control with deep reinforcement learning
+* Continuous control with deep reinforcement learning (DDPG)
   - [DDPG Paper](https://arxiv.org/abs/1509.02971)
   - [code](#)
-* Addressing Function Approximation Error in Actor-Critic Methods
+* Addressing Function Approximation Error in Actor-Critic Methods (TD3)
   - [Twin Dueling DDPG Paper](https://arxiv.org/abs/1802.09477)
   - [code](#)
-* Proximal Policy Optimization Algorithms 
+* Proximal Policy Optimization Algorithms (PPO)
   - [PPO Paper](https://arxiv.org/abs/1707.06347)
   - [OpenAI blog](https://blog.openai.com/openai-baselines-ppo/)
   - [code](#)
-* Sample Efficient Actor-Critic with Experience Replay 
+* Sample Efficient Actor-Critic with Experience Replay (ACER)
   - [ACER Paper](https://arxiv.org/abs/1611.01224)
   - [code](#)
-* Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor 
+* Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor (SAC)
   - [Soft Actor-Critic Paper](https://arxiv.org/abs/1801.01290)
   - [code](#)
-* Generative Adversarial Imitation Learning 
+* Generative Adversarial Imitation Learning (GAIL)
   - [GAIL Paper](https://arxiv.org/abs/1606.03476)
   - [code](#)
-* Hindsight Experience Replay
+* Hindsight Experience Replay (HER)
   - [HER Paper](https://arxiv.org/abs/1707.01495)
   - [OpenAI Blog](https://blog.openai.com/ingredients-for-robotics-research/#understandingher)
   - [code](#)
