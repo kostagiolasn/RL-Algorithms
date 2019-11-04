@@ -3,7 +3,7 @@
 * Playing Atari with Deep Reinforcement Learning [[arxiv]](https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf) [[code]](https://github.com/kostagiolasn/RL-Algorithms/tree/master/Q-learning/1.%20DQN)
 * Deep Reinforcement Learning with Double Q-learning [[arxiv]](https://arxiv.org/abs/1509.06461) [[code]](https://github.com/kostagiolasn/RL-Algorithms/tree/master/Q-learning/2.%20Double%20DQN)
 * Dueling Network Architectures for Deep Reinforcement Learning [[arxiv]](https://arxiv.org/abs/1511.06581) [[code]](https://github.com/kostagiolasn/RL-Algorithms/tree/master/Q-learning/3.%20Dueling%20DQN)
-* Prioritized Experience Replay [[arxiv]](https://arxiv.org/abs/1511.05952) [[code]](#)
+* Prioritized Experience Replay [[arxiv]](https://arxiv.org/abs/1511.05952) [[code]](https://github.com/kostagiolasn/RL-Algorithms/tree/master/Q-learning/4.%20Prioritized%20Experience%20Replay)
 * A Distributional Perspective on Reinforcement Learning [[arxiv]](https://arxiv.org/pdf/1707.06887.pdf) [[code]](#)
 * Rainbow: Combining Improvements in Deep Reinforcement Learning [[arxiv]](https://arxiv.org/abs/1710.02298) [[code]](#)
 * Hierarchical Deep Reinforcement Learning: Integrating Temporal Abstraction and Intrinsic Motivation  [[arxiv]](https://arxiv.org/abs/1604.06057) [[code]](#)
