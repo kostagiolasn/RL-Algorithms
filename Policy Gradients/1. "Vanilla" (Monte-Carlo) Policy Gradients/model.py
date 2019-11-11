@@ -23,6 +23,6 @@ class PolicyNet(nn.Module):
     	# The softmax is put here because the policy
     	# is supposed to model a distribution over actions
     	# given states.
-    	x = self.output(x)
-    	x = F.softmax(x, dim = -1)
-    	return x
+    	action_scores = self.output(x)
+    	out = F.softmax(action_scores, dim = -1)
+    	return out

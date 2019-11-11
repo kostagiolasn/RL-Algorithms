@@ -14,11 +14,13 @@ import math
 def compute_discounted_reward(rewards, gamma = 0.99):
     r = np.array([gamma ** i * rewards[i] for i in range(len(rewards))])
 
+    r_mean = r.mean()
+
     # compute the cumulative sum
-    r = r[::-1].cumsum()[::-1]
+    r_sum = r.sum()
 
     # return its normalized value
-    return r - r.mean()
+    return r_sum - r_mean
     
 def plotLearning(x, scores, filename):
     window = 10

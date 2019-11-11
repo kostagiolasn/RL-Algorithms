@@ -83,11 +83,13 @@ def main():
 			t = t + 1
 
 			# add it to the batch
-			rewards_batch.extend(discounted_reward)
+			rewards_batch.extend([discounted_reward.tolist()])
 
 			# add the state and action to their respective batches
 			states_batch.extend([state])
 			actions_batch.extend([action])
+
+			current_batch_size += 1
 
         
 		state = env.reset()
