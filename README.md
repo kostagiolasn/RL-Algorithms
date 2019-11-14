@@ -12,10 +12,10 @@
 ## Policy Gradient Variants
 * "Vanilla" Policy Gradients
   - [Paper](https://papers.nips.cc/paper/1713-policy-gradient-methods-for-reinforcement-learning-with-function-approximation.pdf)
-  - [code](#)
+  - [code](https://github.com/kostagiolasn/RL-Algorithms/tree/master/Policy%20Gradients/1.%20%22Vanilla%22%20(Monte-Carlo)%20Policy%20Gradients)
 * "Vanilla" Actor Critic
   - [Paper](https://papers.nips.cc/paper/1786-actor-critic-algorithms.pdf)
-  - [code](#)
+  - [code](https://github.com/kostagiolasn/RL-Algorithms/tree/master/Policy%20Gradients/2.%20%22Vanilla%22%20Actor-Critic)
 * Advantage Actor Critic (A2C)
   - [A3C Paper](https://arxiv.org/pdf/1602.01783.pdf) 
   - [OpenAI blog](https://blog.openai.com/baselines-acktr-a2c/#a2canda3c)
