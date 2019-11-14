@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Oct 25 19:21:21 2019
+
+@author: Nikos
+"""
+
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+
+def compute_discounted_reward(rewards, gamma = 0.99):
+    r = np.array([gamma ** i * rewards[i] for i in range(len(rewards))])
+
+    r_mean = r.mean()
+
+    # compute the cumulative sum
+    r_sum = r.sum()
+
+    # return its normalized value
+    return r_sum - r_mean
+    
+def plotLearning(x, scores, filename):
+    window = 10
+    smoothed_scores = [np.mean(scores[i-window:i+1]) if i > window 
+                    else np.mean(scores[:i+1]) for i in range(len(scores))]
+
+    plt.figure(figsize=(12,8))
+    plt.plot(x, scores)
+    plt.plot(x, smoothed_scores)
+    plt.ylabel('Total Scores')
+    plt.xlabel('Episodes')
+    plt.show()
+    plt.savefig(filename)
+
+class ReplayBuffer(object):
+    def __init__(self, capacity):
+        self.experience_memory = []
+        self.capacity = capacity
+        self.offset = 0
+        
+    def push(self, state, action, new_state, reward, done):
+        transition = (state, action, new_state, reward, done)
+        
+        if self.offset >= len(self.experience_memory):
+            self.experience_memory.append(transition)
+        else:
+            self.experience_memory[self.offset] = transition
+        
+        # if the experience memory is full then proceed
+        # to overwrite old experiences. in general the memory
+        # input/output works in a FIFO sense
+        self.offset = (self.offset + 1) % self.capacity
+    
+    def sample(self, batch_size):
+        # sample random batches of transitions
+        return zip(*random.sample(self.experience_memory, batch_size))
+    
+    def __len__(self):
+        return len(self.experience_memory)
