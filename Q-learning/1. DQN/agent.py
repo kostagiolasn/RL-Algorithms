@@ -100,6 +100,7 @@ class DQN_agent(object):
             max_next_q_value_target = next_q_values_target.max(1)[0]
             # compute the optimization target (for the states that are final
             # we only want to add the reward)
+            print(max_next_q_value_target)
             y = reward_batch + (self.gamma * max_next_q_value_target) * (1 - done_batch)
             
             # define the MSE loss between the target and our
