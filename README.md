@@ -22,7 +22,7 @@
   - [code](https://github.com/kostagiolasn/RL-Algorithms/tree/master/Policy%20Gradients/3.%20Advantage%20Actor-Critic%20(A2C))
 * Continuous control with deep reinforcement learning (DDPG)
   - [DDPG Paper](https://arxiv.org/abs/1509.02971)
-  - [code](#)
+  - [code](https://github.com/kostagiolasn/RL-Algorithms/tree/master/Policy%20Gradients/4.%20DDPG)
 * Addressing Function Approximation Error in Actor-Critic Methods (TD3)
   - [Twin Dueling DDPG Paper](https://arxiv.org/abs/1802.09477)
   - [code](#)
